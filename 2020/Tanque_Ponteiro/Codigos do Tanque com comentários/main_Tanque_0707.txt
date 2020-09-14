@@ -1,0 +1,127 @@
+#include <stdio.h>
+#include <iostream>
+#include <cstring>
+#include <locale>
+#include <windows.h>
+#include "Constante.h"
+#include "CadastroPeixe.h"
+using namespace std;
+
+// Atualização 01/07 - Implementar estrutura de ponteiro no código do Tanque
+
+int main(){
+    string nome;
+   
+    int op_sair, opcao;
+    
+	int posicaoTanque = 0;
+    int posicaoPeixe = 0;
+    int posicaoCardume = 0;
+    
+    struct Tanque *pontTanque;
+	struct Peixe *pontPeixe;
+	struct Cardume *pontCardume;
+    
+    	cout << "*******************************" << endl;
+		cout << "  Pesqueiro " << endl;
+		cout << "*********************************" << endl;
+		
+	do {
+		cout << "*********************************" << endl;
+		cout << "  Opcoes do Menu" << endl << endl;
+		cout << INICIALIZAR << " - INICIALIZAR" << endl;
+		cout << INCLUIR_TANQUE << " - INCLUIR NOVO TANQUE" << endl;
+		cout << LISTAR_TANQUE << " - LISTAR TANQUES" << endl;
+		cout << INCLUIR_PEIXE << " - INCLUIR TIPO PEIXE" << endl;
+		cout << LISTAR_PEIXE << " - LISTAR PEIXE" << endl;
+		cout << INCLUIR_CARDUME << " - INCLUIR CARDUME DE PEIXE NO TANQUE" << endl;
+		cout << LISTAR_CARDUME << " - LISTAR CARDUMES DE PEIXES ADICIONADOS NO TANQUE" << endl;
+		// 27/05
+		cout << GRAVAR_TANQUE << " - GRAVAR LISTA DE TANQUE" << endl;	
+		cout << GRAVAR_PEIXE << " - GRAVAR LISTA DE PEIXE" << endl;
+		cout << GRAVAR_CARDUME << " - GRAVAR LISTA DE CARDUME" << endl;
+		
+		cout << GRAVAR_BINARIO << " - GRAVAR LISTAS EM BINARIO" << endl;
+		cout << CARREGAR << " - CARREGAR ARQUIVOS BINARIO" << endl;
+		
+		cout << SAIR << " - SAIR\n" << endl;
+		cout << "* Entre com a opcao desejada: " ;
+		cin >> opcao;
+		
+	  switch (opcao){
+	  	
+	  	 case INICIALIZAR : 
+		        int total;
+		        cout << "Entre com o tamanho do vetor Tanque: " << endl;
+		        cin >> total;
+		        pontTanque = (struct Tanque *) malloc(total * sizeof(struct Tanque));
+		        posicaoTanque = 0;
+		        
+		        cout << "\nEntre com o tamanho do vetor Peixe: " << endl;
+		        cin >> total;
+		        pontPeixe = (struct Peixe *) malloc(total * sizeof(struct Peixe));
+		        posicaoPeixe = 0;
+		        
+		        cout << "\nEntre com o tamanho do vetor Cardume: " << endl;
+		        cin >> total;
+		        pontCardume = (struct Cardume *) malloc(total * sizeof(struct Cardume));
+		        posicaoCardume = 0;
+		        
+		        cout << "\nVetores Inicializados!" << endl;
+		    break;
+	  	
+		case INCLUIR_TANQUE: incluirTanque(&posicaoTanque, pontTanque);
+		cout << "\nValor do contador de Tanque: " << posicaoTanque << endl;
+		//system("cls");
+		              break;
+		              
+		case LISTAR_TANQUE : listarTanque(0,&posicaoTanque, pontTanque);
+		              break;
+		              
+		case INCLUIR_PEIXE: incluirPeixe(&posicaoPeixe, pontPeixe);
+		cout << "\nValor do contador de Peixe: " << posicaoPeixe << endl; 
+		//system("cls");
+				      break;
+				      
+		case LISTAR_PEIXE : listarPeixe(0,&posicaoPeixe, pontPeixe);
+					  break;
+		              
+		case INCLUIR_CARDUME: incluirCardume(&posicaoCardume, &posicaoTanque, pontCardume, pontTanque);
+			cout << "\nValor do contador de Cardume: " << posicaoCardume << endl;
+					  break;
+		              
+		case LISTAR_CARDUME: listarCardume(0, &posicaoCardume, pontCardume);
+					  break;
+					  
+		case GRAVAR_TANQUE: gravarTanque(&posicaoTanque, pontTanque);
+					  break;
+		
+		case GRAVAR_PEIXE: gravarPeixe(&posicaoPeixe, pontPeixe);
+					  break;			  		  
+		
+		case GRAVAR_CARDUME: gravarCardume(&posicaoCardume, pontCardume);
+					  break;
+					  
+		case GRAVAR_BINARIO: gravarDadosBinarios(&posicaoTanque, &posicaoPeixe, &posicaoCardume, pontTanque, pontPeixe, pontCardume);
+					  break;			  
+					  
+		case CARREGAR: carregarArquivos(&posicaoTanque, &posicaoPeixe, &posicaoCardume, pontTanque, pontPeixe, pontCardume);
+					  break;					  
+					  		   
+		case SAIR:
+			cout << "\nDeseja realmente sair do sistema? (1-Sim / 2-Nao):" ;
+			cin >> op_sair;
+			if(op_sair == 1){
+				cout << "Saindo..."<< endl;
+				Sleep(2000);			
+				return 0;
+			}else{
+			}
+			break;
+		
+		default:
+			break;
+	 }
+	} while (opcao >= 0 && opcao < 906);
+}
+

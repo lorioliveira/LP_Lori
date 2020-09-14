@@ -1,0 +1,166 @@
+
+// GRAVANDO TANQUE
+void gravarTanque() {
+    FILE *arquivoT;
+    arquivoT = fopen("TANQUE.TXT", "w+");
+    if (arquivoT == NULL){
+        printf("Problemas na CRIACAO do arquivo\n");
+        return;
+    }
+    for(int i = 0; i < cadastrados[Pos_Tanque]; i++) {
+        fprintf(arquivoT, "\r\n Tanque: ");
+        fprintf(arquivoT, vetorTanque[i].modelo );
+        fprintf(arquivoT, " \r\n ");
+        fprintf(arquivoT, "\r\n Finalidade: ");
+        fprintf(arquivoT, vetorTanque[i].finalidade );
+        fprintf(arquivoT, " \r\n ");
+        fprintf(arquivoT, "\r\n Populacao Total: ");
+        char str[12];
+        sprintf(str, "%d", vetorTanque[i].populacao_total );
+        fprintf(arquivoT, str);
+        fprintf(arquivoT, " \r\n ");
+        fprintf(arquivoT, "\r\n");
+    }
+    fclose(arquivoT);
+    cout << "\n Arquivo gerado com sucesso\n " << "Por favor acesse o endereco local do projeto" << endl;
+}
+
+// GRAVANDO PEIXE
+void gravarPeixe() {
+    FILE *arquivoP;
+    arquivoP = fopen("PEIXE.TXT", "w+");
+    if (arquivoP == NULL){
+        printf("Problemas na CRIACAO do arquivo\n");
+        return;
+    }
+    for(int i = 0; i < cadastrados[Pos_Peixe]; i++) {
+        fprintf(arquivoP, "\r\n Peixe: ");
+        fprintf(arquivoP, vetorPeixe[i].peixe );
+        fprintf(arquivoP, " \r\n ");
+        fprintf(arquivoP, "\r\n Descricao: ");
+        fprintf(arquivoP, vetorPeixe[i].descricao );
+        fprintf(arquivoP, " \r\n ");
+        fprintf(arquivoP, "\r\n");
+    }
+    fclose(arquivoP);
+   
+    cout << "\n Arquivo gerado com sucesso\n " << "Por favor acesse o endereco local do projeto " << endl;
+}
+
+// GRAVANDO CARDUME
+void gravarCardume(){
+    FILE *arquivoC;
+    arquivoC = fopen("CARDUME.TXT", "w+");
+    if (arquivoC == NULL){
+        printf("Problemas na CRIACAO do arquivo\n");
+        return;
+    }
+    for(int i = 0; i < cadastrados[Pos_Cardume]; i++) {
+        fprintf(arquivoC, "\r\n Peixe: ");
+        fprintf(arquivoC, vetorCardume[i].peixe );
+        fprintf(arquivoC, " \r\n ");
+        fprintf(arquivoC, "\r\n Tanque: ");
+        fprintf(arquivoC, vetorCardume[i].tanque );
+        fprintf(arquivoC, " \r\n ");
+        fprintf(arquivoC, "\r\n Quantidade de Peixes: ");
+        char str[12];
+        sprintf(str, "%d", vetorCardume[i].qtdePeixe );
+        fprintf(arquivoC, str);
+        fprintf(arquivoC, "\r\n");
+        fprintf(arquivoC, "\r\n");
+    }
+    fclose(arquivoC);
+    cout << "\n Arquivo gerado com sucesso\n " << "Por favor acesse o endereco local do projeto" << endl;
+}
+
+// GRAVANDO EM BINARIO
+void gravarDadosBinarios() {
+    FILE *arquivoTanque;
+    arquivoTanque = fopen("arquivoTanque.bin", "wb+");
+    if (arquivoTanque == NULL){
+        printf("Problemas na criacao do arquivo\n");
+        return;
+    }
+    fwrite(&vetorTanque, sizeof(Tanque), cadastrados[Pos_Tanque], arquivoTanque);
+    fclose(arquivoTanque);
+     
+    //////////////////////////////
+     FILE *arquivoPeixe;
+    arquivoPeixe = fopen("arquivoPeixe.bin", "wb+");
+    if (arquivoPeixe == NULL){
+        printf("Problemas na criacao do arquivo\n");
+        return;
+    }
+    fwrite(&vetorPeixe, sizeof(Peixe), cadastrados[Pos_Peixe], arquivoPeixe); // grava todo o vetor 
+    fclose(arquivoPeixe);
+    
+    //////////////////////////////////////
+    FILE *arquivoCardume;
+    arquivoCardume = fopen("arquivoCardume.bin", "wb+");
+    if (arquivoCardume == NULL){
+        printf("Problemas na criacao do arquivo\n");
+        return;
+    }
+    fwrite(&vetorCardume, sizeof(Cardume), cadastrados[Pos_Cardume], arquivoCardume); // grava todo o vetor 
+    fclose(arquivoCardume);
+    
+    
+    cout << "\n Arquivo gerado com sucesso" << endl;
+}
+
+// CARREGAR ARQUIVOS
+void carregarArquivos() {
+	//TANQUE
+    FILE *arquivoTanque;
+    cadastrados[Pos_Tanque] = 0;
+    arquivoTanque = fopen("arquivoTanque.bin", "rb+");
+    
+    if(arquivoTanque){ 
+        fread(&vetorTanque, sizeof(Tanque), TAMANHO, arquivoTanque);
+        for(int i = 0; i < TAMANHO; i++) {
+            if (vetorTanque[i].modelo[0] != NULL){
+                cadastrados[Pos_Tanque]++;
+            }
+        }
+        fclose(arquivoTanque);
+    }
+    
+    
+    //PEIXE
+    FILE *arquivoPeixe;
+    cadastrados[Pos_Peixe] = 0;
+    arquivoPeixe = fopen("arquivoPeixe.bin", "rb+");
+    
+    if(arquivoPeixe){ 
+        fread(&vetorPeixe, sizeof(Peixe), TAMANHO, arquivoPeixe);
+        for(int i = 0; i < TAMANHO; i++) {
+            if (vetorPeixe[i].peixe[0] != NULL){
+                cadastrados[Pos_Peixe]++;
+            }
+        }
+        fclose(arquivoPeixe);
+    }
+    
+    
+    //CARDUME
+    FILE *arquivoCardume;
+    cadastrados[Pos_Cardume] = 0;	
+    arquivoCardume = fopen("arquivoCardume.bin", "rb+");
+    
+    if(arquivoCardume){ 
+        fread(&vetorCardume, sizeof(Cardume), TAMANHO, arquivoCardume);
+        for(int i = 0; i < TAMANHO; i++) {
+            if (vetorCardume[i].tanque[0] != NULL){
+                cadastrados[Pos_Cardume]++;
+            }
+        }
+        fclose(arquivoCardume);
+    }
+    
+    cout << "\n Arquivos recuperados com sucesso!\n";
+    
+}
+
+
+
+
