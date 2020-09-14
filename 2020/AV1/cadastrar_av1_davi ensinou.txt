@@ -1,0 +1,20 @@
+
+    /////////////////////////////////////////////////////////
+    
+   /* cout << "== Cadastrar\n" << endl;
+    cout << "Entre com o modelo do Veiculo:" << endl;
+    cin >> vetorVeiculo[posicaoCadastro].modelo;
+    
+    cout << "\nEntre com a marca do Veiculo:" << endl;
+    cin >> vetorVeiculo[posicaoCadastro].marca;
+    
+    cout << "\nEntre com o KM inicial do Veiculo:" << endl;
+    cin >> vetorVeiculo[posicaoCadastro].km_inicial;
+    
+    cout << "\nEntre com o ano do Veiculo:" << endl;
+    cin >> vetorVeiculo[posicaoCadastro].ano;
+    
+    cin >> vetorVeiculo[posicaoCadastro].km_inicial;
+    
+    Pos_Veiculo ++;
+    */
