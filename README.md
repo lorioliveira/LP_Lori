@@ -1,5 +1,3 @@
-Pasta com arquivos de pequenos sistemas feitos por mim em laboratório na matéria de Linguagem de Programação
+Pasta com arquivos de pequenos sistemas feitos por mim em laboratório na matéria de Linguagem de Programação utilizando Linguagem C++ 
 
- Linguagem C++ 
-
- / Semestre 01/2020 **
+ ** Semestre 01/2020 **
