@@ -1,3 +1,5 @@
+/* Código principal de sistema para cadastro de veículos */
+
 #include <stdio.h>
 #include <iostream>
 #include <cstring>

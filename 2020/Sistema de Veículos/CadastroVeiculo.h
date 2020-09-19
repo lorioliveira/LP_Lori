@@ -38,6 +38,7 @@ void listarVeiculo(int i){
     if(i == cadastrados[Pos_Veiculo]){
         return;
     }
+    cout << "***Listar Veiculo(s) Cadastrado(s)***\n" << endl;
     cout << "Modelo: "<< vetorVeiculo[i].modelo << endl;
     cout << "Marca: "<< vetorVeiculo[i].marca << endl;
     cout << "Placa: "<< vetorVeiculo[i].placa << endl;
@@ -55,7 +56,7 @@ void pesquisarVeiculo(int i, char placa[50]){
     }
     int localizado = strcmp(vetorVeiculo[i].placa,placa);
         if(localizado == 0){
-          cout << "Registro encontrado!" << endl << endl;
+          cout << "Registro encontrado!\n" << endl << endl;
           return ;
         }else{
             pesquisarVeiculo(i + 1, placa);
@@ -65,12 +66,12 @@ void pesquisarVeiculo(int i, char placa[50]){
 // ALTERAR
 void alterarVeiculo(int i) {
 	char placa[50];
-	cout << "Alterar" << endl;
+	cout << "***Alterar***" << endl;
 	cout << "Entre com a posicao a ser alterada" << endl;
 	pesquisarVeiculo(0, placa);
 	int p = 0;
 	cin >> p;
-	cout << "digite o valor do novo renavan: ";
+	cout << "digite o valor do novo Renavan: ";
 	cin >> vetorVeiculo[i].renavan;
 }
 
