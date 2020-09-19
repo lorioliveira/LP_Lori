@@ -1,5 +1,7 @@
+Nome: Lorena Oliveira
+Trecho do código da função CadastrarVeiculo - Avaliação 
 
-    /////////////////////////////////////////////////////////
+**************************************
     
    /* cout << "== Cadastrar\n" << endl;
     cout << "Entre com o modelo do Veiculo:" << endl;
