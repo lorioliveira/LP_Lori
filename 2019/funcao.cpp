@@ -1,9 +1,14 @@
-// LP - 15/04/2019
+// LP - 15/04/2019 - Nome: Lorena Oliveira
+
 #include <stdio.h>
 #include <stdlib.h>
 
-// tipo de retorno, nome da função, lista de parametros (o que vc vai receber que vai ser necessario nessa função)
+// AULA SOBRE FUNÇÃO
+// como seria uma função:
+// - tipo de retorno, nome da função, lista de parametros (o que vc vai receber que vai ser necessario nessa função)
 // paramentros (tipo e nome)
+
+
 float calculaAreaQuadrado(float lado) {
       float area;
       

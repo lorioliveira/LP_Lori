@@ -1,7 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include<math.h>
-#include<time.h>
+#include <math.h>
+#include <time.h>
+
+// LP 2019 - MENU COM CÁLCULOS DE MÉDIA, FATORIAL, FIBONACCI, DESCONTOS, ETC.
 
 float mediaFatec (float P1, float T1, float P2, float T2){
       float Media1, Media2, MediaFinal, Recuperacao;
