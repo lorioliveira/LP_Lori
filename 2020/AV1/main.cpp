@@ -8,7 +8,9 @@
 using namespace std;
 
 // NOME: LORENA OLIVEIRA
-// Fiz no DevC++ e alguns comandos o compilador online não entende. Pra nao dar erro, achei melhor enviar só os codigos
+// Fiz no DevC++ e alguns comandos o compilador online não entende. Pra nao dar erro, achei melhor enviar só os codigos feitos.
+
+// MAIN
 
 int main()
 {

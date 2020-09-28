@@ -2,7 +2,10 @@
 #include <stdlib.h>
 #include <math.h>
 #include <time.h>
-	// MENU DE LOII
+	// MEU MENU - Completo
+// Nome: Lorena Oliveira
+// Ano: 2019
+// Linguagem de Programação
 
 int main () {
     //int inteiro;
